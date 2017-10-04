@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Include meta tag to ensure proper rendering and touch zooming -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Include jQuery Mobile stylesheets -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <!-- Include the jQuery library -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- Include the jQuery Mobile library -->
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/databaseHandler.js"></script>
+    <script type="text/javascript" src="js/productHandler.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+    <title>Hello World</title>
+</head>
+<body>
+<div data-role="page" id="addpage">
+    <div data-role="panel" id="addPagePanel">
+        <h1>Menu</h1>
+        <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">Product</li>
+            <li data-icon="plus"><a href="#addpage">Add</a></li>
+            <li data-icon="grid"><a href="#loadpage">Load</a></li>
+        </ul>
+    </div>
+    <div data-role="header" data-position="fixed">
+        <a href="#addPagePanel"
+           class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-shadow"></a>
+        <h1>Add product</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <form>
+            <div class="ui-field-contain">
+                <label for="txtName">Name:</label>
+                <input type="text" id="txtName" data-clear-btn="true"/>
+                <label for="txtQuantity">Quantity:</label>
+                <input type="number" id="txtQuantity" data-clear-btn="true"/>
+                <label for="btnAdd"></label>
+                <a class="ui-btn ui-icon-plus ui-btn-icon-left"
+                   id="btnAdd" onclick="addProduct()">Add</a>
+            </div>
+        </form>
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <h1>WWW.VTGAMES.VN</h1>
+    </div>
+</div>
+<div data-role="page" id="loadpage">
+    <div data-role="panel" id="loadPagePanel">
+        <h1>Menu</h1>
+        <ul data-role="listview" data-inset="true">
+            <li data-role="list-divider">Product</li>
+            <li data-icon="plus"><a href="#addpage">Add</a></li>
+            <li data-icon="grid"><a href="#loadpage">Load</a></li>
+        </ul>
+    </div>
+    <div data-role="header" data-position="fixed">
+        <a href="#loadPagePanel"
+           class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-shadow"></a>
+        <h1>Load products</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <form class="ui-filterable">
+            <input data-type="search" id="txtKeyword"/>
+        </form>
+        <ul data-role="listview" data-filter="true"
+            data-input="#txtKeyword"
+            data-inset="true"
+            id="lstProducts"
+        >
+        </ul>
+        <div data-role="popup" id="popupUpdateDelete">
+            <div data-role="header">
+                <a class="ui-btn ui-icon-delete ui-btn-icon-notext ui-corner-all" data-rel="back"></a>
+                <h1>Options</h1>
+            </div>
+            <div data-role="main" class="ui-content">
+                <a class="ui-btn ui-icon-delete ui-btn-icon-left ui-btn-inline"
+                   onclick="deleteProduct()"
+                >Delete</a>
+                <a class="ui-btn ui-icon-edit ui-btn-icon-left ui-btn-inline"
+                   href="#updatedialog"
+                >Update</a>
+            </div>
+        </div>
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <h1>WWW.VTGAMES.VN</h1>
+    </div>
+</div>
+<div data-role="dialog" id="updatedialog">
+    <div data-role="header">
+        <h1>Update product</h1>
+    </div>
+    <div data-role="main" class="ui-content">
+        <form>
+            <div class="ui-field-contain">
+                <label for="txtNewName">Name:</label>
+                <input type="text" id="txtNewName" data-clear-btn="true"/>
+                <label for="txtNewQuantity">Quantity:</label>
+                <input type="number" id="txtNewQuantity" data-clear-btn="true"/>
+                <label for="btnUpdate"></label>
+                <a class="ui-btn ui-icon-plus ui-btn-icon-left"
+                   id="btnUpdate" onclick="updateProduct()">Update</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
